@@ -40,40 +40,36 @@ export default function RootLayout({
 }>) {
   return (
     // <ClerkProvider>
-    //   <html lang="en">
-    //     <body>
-    //       <header className="flex justify-end">
-    //         <SignedOut>
-    //           <SignInButton />
-    //         </SignedOut>
-    //         <SignedIn>
-    //           <UserButton showName />
-    //         </SignedIn>
-    //         <main className={interFont.className}>{children}</main>
-    //       </header>
+    //   <html lang="en" suppressHydrationWarning>
+    //     <body className={cn(interFont.className, "bg-white dark:bg-[#313338]")}>
+    //       <ThemeProvider
+    //         attribute="class"
+    //         defaultTheme="dark"
+    //         enableSystem={false}
+    //         storageKey="discord-theme"
+    //       >
+    //         {children}
+    //       </ThemeProvider>
     //     </body>
     //   </html>
     // </ClerkProvider>
 
     <ClerkProvider>
-      <html lang="en" suppressHydrationWarning>
+      <html lang="en">
         <body className={cn(interFont.className, "bg-white dark:bg-[#313338]")}>
-          <header className="flex justify-end">
-            <SignedOut>
-              {/* We won't show the SignInButton since we're redirecting */}
-            </SignedOut>
+          <header>
+            <SignedOut>{/* <SignInButton /> */}</SignedOut>
             <SignedIn>
               <UserButton />
             </SignedIn>
           </header>
-
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="light"
             enableSystem={false}
             storageKey="discord-theme"
           >
-            <main>{children}</main>
+            {children}
           </ThemeProvider>
         </body>
       </html>
